@@ -9,12 +9,47 @@ const ELEMENT_DATA: PeriodicElement[] = [];
 export class Words {
     public static ELEMENT_DATA = ELEMENT_DATA;
 
+    /**
+     * Loads the data from local storage
+     * 
+     * @public
+     */
+    public static load = () => {
+        console.log(`Load data from loacl storage`);
+        var data = localStorage.getItem(`words`);
+        if (data !== null) {
+            var savedWords = JSON.parse(data);
+            ELEMENT_DATA.push(...savedWords);
+            console.log(ELEMENT_DATA);
+        }
+    }
+
+    /**
+     * Saves the data to local storage
+     * 
+     * @public
+     */
+    public static save = () => {
+        console.log(`Save data to loacl storage`);
+        localStorage.setItem(`words`, JSON.stringify(ELEMENT_DATA));
+    }
+
     /*****************************************************
      * Tab 1
      ****************************************************/
+    /**
+     * Merges an array of buffers into a new buffer.
+     *
+     * @param {Buffer[]} list The array of buffers to concat
+     * @param {Number} totalLength The total length of buffers in the list
+     * @return {Buffer} The resulting buffer
+     * @public
+     */
     public static add = (de: string, en: string) => {
         console.log(`Add words`);
         ELEMENT_DATA.push({ id: uuidv4(), de: de, en: en });
+
+        Words.save();
     }
 
     public static update = (id: string, de: string, en: string) => {
@@ -25,6 +60,8 @@ export class Words {
                 e.en = en;
             }
         });
+
+        Words.save();
     }
 
     public static remove = (id: string) => {
@@ -34,11 +71,15 @@ export class Words {
                 ELEMENT_DATA.splice(i, 1);
             }
         });
+
+        Words.save();
     }
 
     public static resetData = () => {
         console.log(`Reset data`);
         ELEMENT_DATA.splice(0, ELEMENT_DATA.length);
+
+        localStorage.removeItem(`words`);
     }
 
     public static addExampleData = () => {
@@ -59,6 +100,8 @@ export class Words {
             { id: uuidv4(), de: 'Tochter', en: `daughter` },
             { id: uuidv4(), de: 'Vogel', en: `bird` },
         );
+
+        Words.save();
     }
 
     /*****************************************************

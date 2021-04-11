@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Tab2Component } from './component/tab2/tab2.component';
 import { Tab3Component } from './component/tab3/tab3.component';
+import { Words } from './component/util/words';
 
 
 
@@ -10,7 +11,10 @@ import { Tab3Component } from './component/tab3/tab3.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  ngOnInit(): void {
+    Words.load();
+  }
   @ViewChild(Tab2Component) private tap2Component!: Tab2Component;
   @ViewChild(Tab3Component) private tab3Component!: Tab3Component;
   title = 'vocabulary-trainer';
