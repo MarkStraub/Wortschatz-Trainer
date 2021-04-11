@@ -1,0 +1,21 @@
+<h1>Wortschatz-Trainer</h1>
+
+<mat-tab-group (selectedTabChange)="onTabChanged($event)" animationDuration="0ms">
+  <mat-tab label="Erfassen" disabled="{{examStarted}}">
+    <div class="content">
+      <app-tab1></app-tab1>
+    </div>
+  </mat-tab>
+  <mat-tab label="Trainieren" disabled="{{examStarted}}">
+    <div class="content">
+      <app-tab2></app-tab2>
+    </div>
+  </mat-tab>
+  <mat-tab label="Prüfen">
+    <div class="content">
+      <app-tab3></app-tab3>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+
+<router-outlet></router-outlet>

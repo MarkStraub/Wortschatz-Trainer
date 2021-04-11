@@ -1,0 +1,65 @@
+<div *ngIf="result">
+    <p><b>Es wurden {{correctAnswers}} von {{size}} Fragen korrekt beantwortet.</b></p>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Word Column -->
+        <ng-container matColumnDef="word">
+            <th mat-header-cell *matHeaderCellDef> Wort </th>
+            <td mat-cell *matCellDef="let element"> {{element.word}} </td>
+        </ng-container>
+
+        <!-- Solution Column -->
+        <ng-container matColumnDef="solution">
+            <th mat-header-cell *matHeaderCellDef> L&ouml;sung </th>
+            <td mat-cell *matCellDef="let element"> {{element.solution}} </td>
+        </ng-container>
+
+        <!-- Answer Column -->
+        <ng-container matColumnDef="answer">
+            <th mat-header-cell *matHeaderCellDef> Antwort </th>
+            <td mat-cell *matCellDef="let element"> {{element.answer}} </td>
+        </ng-container>
+
+        <!-- Correct Column -->
+        <ng-container matColumnDef="correct">
+            <th mat-header-cell *matHeaderCellDef style="width:20%"> Korrekt </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon *ngIf="element.correct" style="color:green">check_circle_outline</mat-icon>
+                <mat-icon *ngIf="element.correct == false" style="color: red;">error_outline</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+
+
+
+
+
+
+
+</div>
+<div *ngIf="started==false">
+    <p>Hier kannst Du die erfassten W&ouml;rter trainieren, bevor Du Dein k&ouml;nnen bei der Pr&uuml;fung unter Beweis
+        stellst.</p>
+    <p *ngIf="wordsCreated==false">Es wurden noch keine W&ouml;rter f&uuml;r die Pr&uuml;fung erfasst.</p>
+    <button *ngIf="wordsCreated" mat-raised-button (click)="start()">Starten</button>
+</div>
+<div *ngIf="started">
+    <p>&Uuml;bersetze dieses Wort: <b>{{shownWord}}</b></p>
+
+    <form class="tab-2" [formGroup]="formdata" (ngSubmit)="submit()">
+        <mat-form-field class="full-width">
+            <mat-label>&Uuml;bersetzung</mat-label>
+            <input type="text" name="word" matInput placeholder="" formControlName="word" autofocus />
+        </mat-form-field>
+        <button mat-raised-button>&Uuml;berpr&uuml;fen</button>
+        <button mat-raised-button (click)="cancel()">Abbrechen</button>
+
+    </form>
+
+    <p>{{currentIndex}} / {{size}}</p>
+</div>

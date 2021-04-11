@@ -1,0 +1,53 @@
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef style="width:20%"> Action </th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" (click)="removeWords(row)" title="Delete Words">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" (click)="editWords(row)" title="Edit Words">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <!-- Deutsch Column -->
+    <ng-container matColumnDef="de">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort()"> Deutsch </th>
+        <td mat-cell *matCellDef="let element"> {{element.de}} </td>
+    </ng-container>
+
+    <!-- Englisch Column -->
+    <ng-container matColumnDef="en">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Englisch </th>
+        <td mat-cell *matCellDef="let element"> {{element.en}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- Form -->
+<div>
+    <form class="tab-1" [formGroup]="formdata" (ngSubmit)="submit()">
+        <mat-form-field [style.display]="'none'">
+        <!-- <mat-form-field> -->
+            <input type="text" matInput placeholder="" formControlName="id" />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Deutsch</mat-label>
+            <input type="text" name="de" required matInput placeholder="" formControlName="de" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>English</mat-label>
+            <input type="text" name="en" required matInput placeholder="" formControlName="en" />
+        </mat-form-field>
+
+        <button mat-raised-button>W&ouml;rter hinzuf&uuml;gen</button>
+        <button mat-raised-button (click)="addExampleData()">Beispieldaten hinzuf&uuml;gen</button>
+        <button mat-raised-button (click)="resetData()">Daten zur&uuml;cksetzen</button>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<div *ngIf="started==false">
+    <p>Hier kannst Du die erfassten W&ouml;rter trainieren, bevor Du Dein k&ouml;nnen bei der Pr&uuml;fung unter Beweis stellst.</p>
+    <p *ngIf="wordsCreated==false">Es wurden noch keine W&ouml;rter zum Trainieren erfasst.</p>
+    <button *ngIf="wordsCreated" mat-raised-button (click)="start()">Starten</button>
+</div>
+<div *ngIf="started">
+    <p>&Uuml;bersetze dieses Wort: <b>{{shownWord}}</b></p>
+    <div *ngIf="showSuccess" class="msg success">
+        <mat-icon>check_circle_outline</mat-icon> Das Wort wurde korrekt &uuml;bersetzt.
+    </div>
+    <div *ngIf="showError" class="msg error">
+        <mat-icon>error_outline</mat-icon> Das Wort wurde nicht korrekt &uuml;bersetzt. Die korrekte &Uuml;bersetzung lautet: <b>{{solution}}</b>
+    </div>
+    <form class="tab-2" [formGroup]="formdata" (ngSubmit)="submit()">
+        <mat-form-field [style.display]="'none'">
+            <!-- <mat-form-field> -->
+            <input type="text" matInput placeholder="" formControlName="id" />
+        </mat-form-field>
+        <mat-form-field *ngIf="showNextWord==false" class="full-width">
+            <mat-label>&Uuml;bersetzung</mat-label>
+            <input type="text" name="word" matInput placeholder="" formControlName="word" autofocus/>
+        </mat-form-field>
+        <button *ngIf="showNextWord==false" mat-raised-button>&Uuml;berpr&uuml;fen</button>
+        <button *ngIf="showNextWord" mat-raised-button (click)="nextWord()">N&auml;chstes Wort</button>
+    </form>
+</div>
