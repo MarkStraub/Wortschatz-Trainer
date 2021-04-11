@@ -12,6 +12,7 @@ export class Words {
     /**
      * Loads the data from local storage
      * 
+     * @static
      * @public
      */
     public static load = () => {
@@ -27,6 +28,7 @@ export class Words {
     /**
      * Saves the data to local storage
      * 
+     * @static
      * @public
      */
     public static save = () => {
@@ -38,11 +40,11 @@ export class Words {
      * Tab 1
      ****************************************************/
     /**
-     * Merges an array of buffers into a new buffer.
+     * Adds a new word
      *
-     * @param {Buffer[]} list The array of buffers to concat
-     * @param {Number} totalLength The total length of buffers in the list
-     * @return {Buffer} The resulting buffer
+     * @static
+     * @param {string} de The german word
+     * @param {string} en The english word 
      * @public
      */
     public static add = (de: string, en: string) => {
@@ -52,6 +54,15 @@ export class Words {
         Words.save();
     }
 
+    /**
+     * Updates a word
+     *
+     * @static
+     * @param {string} id The uuid of the word
+     * @param {string} de The german word
+     * @param {string} en The english word 
+     * @public
+     */
     public static update = (id: string, de: string, en: string) => {
         console.log(`Update words`);
         ELEMENT_DATA.forEach(e => {
@@ -64,6 +75,14 @@ export class Words {
         Words.save();
     }
 
+
+    /**
+     * Removes a word
+     *
+     * @static
+     * @param {string} id The uuid of the word
+     * @public
+     */
     public static remove = (id: string) => {
         console.log(`Remove words`);
         ELEMENT_DATA.forEach((e, i) => {
@@ -75,6 +94,12 @@ export class Words {
         Words.save();
     }
 
+    /**
+     * Reset the words
+     *
+     * @static
+     * @public
+     */
     public static resetData = () => {
         console.log(`Reset data`);
         ELEMENT_DATA.splice(0, ELEMENT_DATA.length);
@@ -82,6 +107,12 @@ export class Words {
         localStorage.removeItem(`words`);
     }
 
+    /**
+     * Adds example data
+     *
+     * @static
+     * @public
+     */
     public static addExampleData = () => {
         console.log(`Add example data`);
         ELEMENT_DATA.splice(0, ELEMENT_DATA.length);
@@ -107,12 +138,25 @@ export class Words {
     /*****************************************************
      * Tab 2
      ****************************************************/
+    /**
+     * Returns a random word
+     *
+     * @static
+     * @returns {PeriodicElement} The random word
+     * @public
+     */
     public static getRandomWord = () => {
         let i = Math.floor(Math.random() * ELEMENT_DATA.length);
         return ELEMENT_DATA[i];
     }
 }
 
+/**
+ * Returns a uuid
+ *
+ * @returns {string} The uuid
+ * @public
+ */
 // https://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid
 var uuidv4 = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
