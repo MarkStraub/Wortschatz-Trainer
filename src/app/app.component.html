@@ -1,5 +1,10 @@
 <h1>Wortschatz-Trainer</h1>
-
+<p>Der Wortschatz-Trainer dient dazu, W&ouml;rter zu lernen. Um zu beginnen, gehe wie folgt vor:</p>
+<ol type="1">
+  <li><b>Erfassen:</b> Erfasse neue W&ouml;rter, um diese anschliessend zu Trainieren und Dich zu pr&uuml;fen.</li>
+  <li><b>Trainieren:</b> Trainiere die erfassten W&ouml;rter, um Dich anschliessend zu pr&uuml;fen.</li>
+  <li><b>Pr&uuml;fen:</b> Pr&uuml;fe Dich, ob Du die erfassten W&ouml;rter beherrschst.</li>
+</ol>
 <mat-tab-group (selectedTabChange)="onTabChanged($event)" animationDuration="0ms">
   <mat-tab label="Erfassen" disabled="{{examStarted}}">
     <div class="content">
@@ -11,7 +16,7 @@
       <app-tab2></app-tab2>
     </div>
   </mat-tab>
-  <mat-tab label="Prüfen">
+  <mat-tab label="Pr&uuml;fen">
     <div class="content">
       <app-tab3></app-tab3>
     </div>
