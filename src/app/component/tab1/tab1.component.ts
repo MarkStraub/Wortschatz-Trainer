@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { Words } from '../util/words'
+import { PeriodicElement, Words } from '../util/words'
 
 
 @Component({
@@ -29,22 +29,33 @@ export class Tab1Component {
     });
   }
 
+  /**
+   * Reverse the table
+   *
+   * @public
+   */
   public sort = () => {
     this.isAsc = !this.isAsc;
     this.sortData();
   }
 
+  /**
+   * Sorts the table
+   *
+   * @private
+   */
   private sortData = () => {
     Words.ELEMENT_DATA.sort((a, b) => {
       return (a.de.toLowerCase() < b.de.toLowerCase() ? -1 : 1) * (this.isAsc ? 1 : -1);
     });
-    this.update();
+    this.refresh();
   }
 
-  public update = () => {
-    this.dataSource = new MatTableDataSource(Words.ELEMENT_DATA);
-  }
-
+  /**
+   * Submits the entered word
+   *
+   * @public
+   */
   public submit = () => {
     if (this.formdata.valid) {
       console.log(this.formdata.value);
@@ -61,29 +72,56 @@ export class Tab1Component {
     }
   }
 
-  public editWords = (data: any) => {
-    console.log(typeof data);
+  /**
+   * Edites a word
+   *
+   * @param {PeriodicElement} data The word to be removed
+   * @public
+   */
+  public editWords = (data: PeriodicElement) => {
     this.formdata.setValue({
       id: data.id,
       de: data.de,
       en: data.en
     });
-    console.log(data);
   }
 
-  public removeWords = (data: any) => {
+  /**
+   * Removes a word
+   *
+   * @param {PeriodicElement} data The word to be removed
+   * @public
+   */
+  public removeWords = (data: PeriodicElement) => {
     Words.remove(data.id);
-    this.update();
+    this.refresh();
   }
 
+  /**
+   * Adds some example words
+   *
+   * @public
+   */
   public addExampleData = () => {
     Words.addExampleData();
-    this.update();
+    this.refresh();
     return false;
   }
 
+  /**
+   * Resets the words
+   *
+   * @public
+   */
   public resetData = () => {
     Words.resetData();
-    this.update();
+    this.refresh();
   }
+
+  /**
+   * Submits the entered word
+   *
+   * @public
+   */
+  public refresh = () => this.dataSource = new MatTableDataSource(Words.ELEMENT_DATA);
 }

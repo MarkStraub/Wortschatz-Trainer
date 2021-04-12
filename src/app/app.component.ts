@@ -11,7 +11,7 @@ import { Words } from './component/util/words';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   ngOnInit(): void {
     Words.load();
   }
@@ -34,6 +34,19 @@ export class AppComponent implements OnInit{
     }
   }
 
+  /**
+   * Setter method of variable examStarted
+   *
+   * @param {boolean} started If the exam has been started 
+   * @public
+   */
   public set examStarted(started: boolean) { this._examStarted = started };
+
+  /**
+   * Getter method of the variable examStarted the size of the words
+   *
+   * @return {boolean} If the exam has been started 
+   * @public
+   */
   public get examStarted() { return this._examStarted };
 }

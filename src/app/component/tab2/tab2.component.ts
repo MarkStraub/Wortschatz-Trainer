@@ -27,11 +27,21 @@ export class Tab2Component implements OnInit {
     });
   }
 
+  /**
+   * Starts the training
+   *
+   * @public
+   */
   public start = () => {
     this.started = true;
     this.getNextWord();
   }
 
+  /**
+   * Gets the next training word
+   *
+   * @private
+   */
   private getNextWord = () => {
     console.log('test');
     this.randomWord = Words.getRandomWord();
@@ -45,6 +55,11 @@ export class Tab2Component implements OnInit {
     }
   }
 
+  /**
+   * Submits the entered word
+   *
+   * @public
+   */ 
   public submit = () => {
     if (this.formdata.value.word !== null) {
       if (this.formdata.value.word === this.solution) {
@@ -57,10 +72,20 @@ export class Tab2Component implements OnInit {
     }
   }
 
+  /**
+   * Presents the next word
+   *  
+   * @public
+   */
   public nextWord = () => {
     this.showSuccess = this.showError = this.showNextWord = false;
     this.getNextWord();
   }
 
+  /**
+   * Refreshs the table
+   *
+   * @public
+   */
   public refresh = () => this.wordsCreated = Words.ELEMENT_DATA.length > 0;
 }

@@ -24,10 +24,24 @@ export class Exam {
         }
     }
 
+    /**
+     * Returns the size of the words
+     *
+     * @static
+     * @return {int} The size of the words 
+     * @public
+     */
     public size = () => {
         return this.words.length;
     }
 
+    /**
+     * Get the next word
+     *
+     * @static
+     * @return {PeriodicElement} The next word
+     * @public
+     */
     public getNextWord = () => {
         return this.words.pop();
     }

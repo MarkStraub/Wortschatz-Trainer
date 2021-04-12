@@ -35,6 +35,13 @@ export class Tab3Component implements OnInit {
     });
   }
 
+  /**
+   * Returns the size of the words
+   *
+   * @param {int} a 
+   * @return {int}  
+   * @public
+   */
   public start = () => {
     this.parent.examStarted = this.started = true;
     this.result = false;
@@ -47,6 +54,11 @@ export class Tab3Component implements OnInit {
     ANSWER_DATA.splice(1, ANSWER_DATA.length);
   }
 
+  /**
+   * Gets the next exam word
+   *
+   * @private
+   */
   private getNextWord = () => {
     var word = this.exam.getNextWord();
     if (word === undefined) {
@@ -64,6 +76,11 @@ export class Tab3Component implements OnInit {
     ANSWER_DATA.push({ word: this.shownWord, solution: this.solution, answer: '', correct: false });
   }
 
+  /**
+   * Presents the result of the exam
+   *
+   * @private
+   */
   private showResult = () => {
     this.parent.examStarted = this.started = false;
     this.result = true;
@@ -74,6 +91,11 @@ export class Tab3Component implements OnInit {
     this.dataSource = new MatTableDataSource(ANSWER_DATA);
   }
 
+  /**
+   * Submits the entered word
+   *
+   * @public
+   */
   public submit = () => {
     if (this.formdata.value.word !== null) {
       ANSWER_DATA[this.currentIndex - 1].answer = this.formdata.value.word;
@@ -83,10 +105,20 @@ export class Tab3Component implements OnInit {
     }
   }
 
+  /**
+   * Cancel the exam
+   *
+   * @public
+   */
   public cancel = () => {
     this.parent.examStarted = this.started = false;
     this.formdata.reset();
   }
 
+  /**
+   * Refreshs the table
+   *
+   * @public
+   */
   public refresh = () => this.wordsCreated = Words.ELEMENT_DATA.length > 0;
 }
