@@ -36,10 +36,8 @@ export class Tab3Component implements OnInit {
   }
 
   /**
-   * Returns the size of the words
+   * Starts the exam
    *
-   * @param {int} a 
-   * @return {int}  
    * @public
    */
   public start = () => {
