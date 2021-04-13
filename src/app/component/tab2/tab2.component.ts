@@ -43,9 +43,7 @@ export class Tab2Component implements OnInit {
    * @private
    */
   private getNextWord = () => {
-    console.log('test');
     this.randomWord = Words.getRandomWord();
-    console.log(this.randomWord);
     if (Math.random() < 0.5) {
       this.shownWord = this.randomWord.de;
       this.solution = this.randomWord.en;

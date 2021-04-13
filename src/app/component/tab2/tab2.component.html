@@ -18,7 +18,7 @@
         </mat-form-field>
         <mat-form-field *ngIf="showNextWord==false" class="full-width">
             <mat-label>&Uuml;bersetzung</mat-label>
-            <input type="text" name="word" matInput placeholder="" formControlName="word" autofocus/>
+            <input type="text" id="word" name="word" matInput placeholder="" formControlName="word" autofocus />
         </mat-form-field>
         <button *ngIf="showNextWord==false" mat-raised-button>&Uuml;berpr&uuml;fen</button>
         <button *ngIf="showNextWord" mat-raised-button (click)="nextWord()">N&auml;chstes Wort</button>
