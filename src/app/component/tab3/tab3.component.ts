@@ -45,13 +45,13 @@ export class Tab3Component implements OnInit {
   public start = () => {
     this.parent.examStarted = this.started = true;
     this.result = false;
+    ANSWER_DATA.splice(0, ANSWER_DATA.length);
 
     this.exam = new Exam();
     this.size = this.exam.size();
     this.getNextWord();
     this.currentIndex = 1;
     this.correctAnswers = 0;
-    ANSWER_DATA.splice(0, ANSWER_DATA.length);
   }
 
   /**
