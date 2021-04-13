@@ -14,13 +14,13 @@
 
     <!-- Deutsch Column -->
     <ng-container matColumnDef="de">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort()"> Deutsch </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('de')"> Deutsch </th>
         <td mat-cell *matCellDef="let element"> {{element.de}} </td>
     </ng-container>
 
     <!-- Englisch Column -->
     <ng-container matColumnDef="en">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Englisch </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header (click)="sort('en')"> Englisch </th>
         <td mat-cell *matCellDef="let element"> {{element.en}} </td>
     </ng-container>
 

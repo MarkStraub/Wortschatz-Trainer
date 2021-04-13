@@ -2,6 +2,7 @@
 Der Wortschatz-Trainer dient dazu, Fremdwörter zu erlernen. Um zu beginnen, gehe wie folgt vor:
 
 1. **Erfassen**: Erfasse neue Wörter, um diese anschliessend zu Trainieren und Dich zu prüfen.
+   Die Tabelle kann für beide Sprachen sortiert werden. Dazu auf den Titel (Deutsch oder Englisch) drücken. Für eine umgekehrte Sortierung, nochmals drücken.
 2. **Trainieren**: Trainiere die erfassten Wörter, um Dich anschliessend zu prüfen.
 3. **Prüfen**: Prüfe Dich, ob Du die erfassten Wörter beherrschst.
 

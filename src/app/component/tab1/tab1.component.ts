@@ -13,7 +13,8 @@ export class Tab1Component {
   displayedColumns: string[] = ['action', 'de', 'en'];
   dataSource = new MatTableDataSource(Words.ELEMENT_DATA);
   isAsc = true;
-  formdata !: FormGroup
+  formdata !: FormGroup;
+  sortBy = 'de';
 
   constructor(private formBuilder: FormBuilder) {
     Words.ELEMENT_DATA.sort((a, b) => {
@@ -34,8 +35,11 @@ export class Tab1Component {
    *
    * @public
    */
-  public sort = () => {
-    this.isAsc = !this.isAsc;
+  public sort = (sortBy: string) => {
+    // Change from ascending to descending or vice versa or set it to ascending
+    this.isAsc = this.sortBy === sortBy ? !this.isAsc : true;
+
+    this.sortBy = sortBy;
     this.sortData();
   }
 
@@ -46,7 +50,13 @@ export class Tab1Component {
    */
   private sortData = () => {
     Words.ELEMENT_DATA.sort((a, b) => {
-      return (a.de.toLowerCase() < b.de.toLowerCase() ? -1 : 1) * (this.isAsc ? 1 : -1);
+      switch (this.sortBy) {
+        case 'en':
+          return compare(a.en.toLowerCase(), b.en.toLowerCase(), this.isAsc);
+        case 'de':
+        default:
+          return compare(a.de.toLowerCase(), b.de.toLowerCase(), this.isAsc);
+      }
     });
     this.refresh();
   }
@@ -124,4 +134,17 @@ export class Tab1Component {
    * @public
    */
   public refresh = () => this.dataSource = new MatTableDataSource(Words.ELEMENT_DATA);
+}
+
+/**
+ * Copares two strings and sort them
+ * 
+ * @param {string} a The first string
+ * @param {string} b The second string
+ * @param {boolean} isAsc If it is ascending
+ * @returns {int} The value to sort it correct
+ * @public
+ */
+function compare(a: string, b: string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
