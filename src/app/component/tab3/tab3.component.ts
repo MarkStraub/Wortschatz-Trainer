@@ -51,7 +51,7 @@ export class Tab3Component implements OnInit {
     this.getNextWord();
     this.currentIndex = 1;
     this.correctAnswers = 0;
-    ANSWER_DATA.splice(1, ANSWER_DATA.length);
+    ANSWER_DATA.splice(0, ANSWER_DATA.length);
   }
 
   /**
