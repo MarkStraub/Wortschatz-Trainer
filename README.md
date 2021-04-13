@@ -1,6 +1,10 @@
-# VocabularyTrainer
+# Wortschatz-Trainer
+Der Wortschatz-Trainer dient dazu, Fremdwörter zu erlernen. Um zu beginnen, gehe wie folgt vor:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
+1. **Erfassen**: Erfasse neue Wörter, um diese anschliessend zu Trainieren und Dich zu prüfen.
+2. **Trainieren**: Trainiere die erfassten Wörter, um Dich anschliessend zu prüfen.
+3. **Prüfen**: Prüfe Dich, ob Du die erfassten Wörter beherrschst.
+
 
 ## Development server
 
@@ -14,14 +18,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## License
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+GNU GENERAL PUBLIC LICENSE V3
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+_This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8._
