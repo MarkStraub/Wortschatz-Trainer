@@ -15,7 +15,7 @@ export class Words {
      * @static
      * @public
      */
-    public static load = () => {
+    public static load = (): void => {
         console.log(`Load data from loacl storage`);
         var data = localStorage.getItem(`words`);
         if (data !== null) {
